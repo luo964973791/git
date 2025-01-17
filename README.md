@@ -9,4 +9,13 @@ git ls-files -v | grep '^h' | awk '{print $2}'| grep db.php |xargs git update-in
 git add . && git commit -m "ignore db.php" && git push origin main  #提交
 
 git config --global credential.helper store #git clone https: 记住密码
+
+#2025年github密钥提交方式.
+cat <<EOF | sudo tee /root/.ssh/config
+Host github.com
+  Hostname ssh.github.com
+  Port 443
+  User git
+EOF
+ssh -T -p 443 git@ssh.github.com
 ```
